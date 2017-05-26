@@ -50,7 +50,7 @@ public class operationOutputs extends HttpServlet {
 
 
 		   if (request.getParameter("fin") != null) {
-                       j++
+                       j++;
                        String messageName = ("output "+(j));
                        message = traitement.SetMessageFromPartList(partlist, messageName);
                                             messageList.add(message);
