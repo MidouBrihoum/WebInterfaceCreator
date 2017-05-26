@@ -26,6 +26,8 @@ public class operation extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
          static int i=0;
 	 static List<Element> operations = new  ArrayList<Element>();
+         static List<Element> operationsC = new  ArrayList<Element>();
+
 
 
     
@@ -50,26 +52,24 @@ public class operation extends HttpServlet {
 
 		
 		String name = request.getParameter("name");
+                String type = request.getParameter("type");
+                String concret = request.getParameter("concret");
+                String debut = request.getParameter("debut");
+                String fin = request.getParameter("fin");
+               
+                
                                    HttpSession session = request.getSession() ;
                                    
-                                                           Document d = traitement.getDoc();
                                                            
 
                          Element input =  (Element)  session.getAttribute("input") ;
                          Element output =  (Element)  session.getAttribute("output") ;	
-//deeleeet---------------------------------------------------------------------------
-//                          Element     el1  = d.createElement("aa");
-//                            Element     el2  = d.createElement("bb");
-//                            List<Element> liste = new   ArrayList<Element>();
-//                            liste.add(el2);
-//                            liste.add(el1);
-//                            
-  //-------------------------------------------------
-                            
+                       
 
 
                          
               operations.add(  traitement.OperationFromString(name, input, output, conditions));
+              operationsC.add(  traitement.OperationCFromString(name, type, concret, debut, fin));
                 session.setAttribute("operationsList", operations);
           
                 

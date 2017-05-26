@@ -48,7 +48,7 @@ public class XMLCreator {
         return rootElement;
     }
 
-	void traitement ( List<String> KeywordList, List<Element> messageListe,List<Element> operationListe)   //X est le nom de Operations
+	void traitement ( List<String> KeywordList, List<Element> messageListe,List<Element> operationListe, List<Element> operationCListe,String applicationName)   //X est le nom de Operations
 	 {
 		 try {
                         rootElement = doc.createElement("definition");
@@ -77,6 +77,22 @@ public class XMLCreator {
                         putListOfElementOnRootElement(messageListe, abstr)	;
 
                               abstr.appendChild(operations);
+                              
+                              
+                              //--------- concrét
+                              
+                              Element concret = doc.createElement("concret");
+                               concret.setAttribute("id", "concret");
+                               
+                               
+                             Element applicationNm = doc.createElement("application");
+                             applicationNm.setTextContent(applicationName);
+                             concret.appendChild(applicationNm);
+                             Element operationsC = doc.createElement("operationsC");
+                            putListOfElementOnRootElement(operationCListe, operationsC)	;
+                            concret.appendChild(operationsC);
+                          
+                              rootElement.appendChild(concret);
 
 
 				
@@ -187,17 +203,29 @@ public class XMLCreator {
 	 }
 	 
 	 
+	  Element OperationCFromString ( String name,String type,String concret,String debut,String fin){ // retourne un element operation
+		 Element operation = doc.createElement("operationC");
+			operation.setAttribute("name", name);
+                        operation.setAttribute("type", type);
+		 Element concretElement = doc.createElement("titre");
+                 concretElement.setTextContent(concret);
+                 operation.appendChild(concretElement);
+                 
+                 Element nlignes = doc.createElement("nligne");
+                Element debutElement = doc.createElement("debut");
+                debutElement.setTextContent(debut);
+              Element finElement = doc.createElement("fin");
+              finElement.setTextContent(fin);
+                nlignes.appendChild(debutElement);
+                nlignes.appendChild(finElement);
+                operation.appendChild(nlignes);
+			return operation; }
 	 
 	 
 	 
+         
+         
 	 
-	 
-	public static void main(String args[]) {
-
-	
-	
-	}
-
 	
 	
 	

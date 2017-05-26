@@ -17,6 +17,7 @@ import static xml_creator.PreConditions.conditions;
 import static xml_creator.addkeywords1.KeywordsStringList;
 import static xml_creator.addkeywords1.doc;
 import static xml_creator.operation.operations;
+import static xml_creator.operation.operationsC;
 import static xml_creator.operationOutputs.partlist;
 import static xml_creator.operationinputs.traitement;
 import static xml_creator.operationinputs.messageList;
@@ -25,8 +26,8 @@ import static xml_creator.operationinputs.partlist;
 
 
 
-@WebServlet("/confirmation")
-public class confirmation extends HttpServlet {
+@WebServlet("/applicationName")
+public class applicationName extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
          static int i=0;
 
@@ -42,7 +43,7 @@ public class confirmation extends HttpServlet {
    
 
 
-	public confirmation() {
+	public applicationName() {
             
         super();
 
@@ -54,10 +55,16 @@ public class confirmation extends HttpServlet {
 
 
 		   if (request.getParameter("fin") != null) {
-                 
-//
+                       
+                                String name = request.getParameter("name");                 
 
-          	                		response.sendRedirect("applicationName.jsp");
+                                  HttpSession session = request.getSession() ;
+                                  
+                                  traitement.setDoc(doc);
+                                    traitement.traitement(KeywordsStringList, messageList, operations,operationsC,name);
+                                 
+
+          	                		response.sendRedirect("merci.jsp");
 
         }else {
                        

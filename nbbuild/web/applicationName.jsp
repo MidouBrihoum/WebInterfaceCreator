@@ -10,14 +10,11 @@
 
 
 
-	<form action="operation" method="get">
+	<form action="applicationName" method="get">
 		<fieldset>
-			<legend>veuillez introduire les informations concrétes de l'operation</legend>
+			<legend>veuillez introduire le nom de l'application</legend>
 			<br>nom <input type="text" name="name" value="nom"><br>
-                        <br>type du service  <input type="text" name="type" value="type"><br>
-                        <br>titre concréte <input type="text" name="concret" value="concret"><br>
-                        <br>ligne du début <input type="text" name="debut" value="debut"><br>
-                        <br>ligne de fin <input type="text" name="fin" value="fin"><br>
+                      
 
                         <br>  <br>
 
